@@ -911,11 +911,12 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "st", NULL };
-static const char *browser[]  = { "librewolf", NULL };
-static const char *filemanager[]  = { "st -e yazi", NULL };
 
-static const char *lockscreen[]  = { "slock", NULL };
+static const char *termcmd[] = { "st", NULL };
+static const char *browser[] = { "librewolf", NULL };
+static const char *filemanager[] = { "st", "-e", "yazi", NULL };
+
+static const char *lockscreen[] = { "slock", NULL };
 
 static const char *screenshot[] = { "flameshot", "gui", NULL };
 
@@ -1062,7 +1063,7 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_r,          spawn,                  {.v = browser } },
   { MODKEY|ShiftMask,             XK_w,          spawn,                  {.v = filemanager } },
   /* utils */
-	{ MODKEY|ShiftMask,             XK_s,          spawn,                  {.v = lockscreen } },
+	{ MODKEY,                       XK_s,          spawn,                  {.v = lockscreen } },
   { 0,                            XK_Print,      spawn,                  {.v = screenshot } },
 
   /* volume and brightness control (<X11/XF86keysym.h> included) */
