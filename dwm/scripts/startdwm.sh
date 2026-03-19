@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Keyboard layouts
-setxkbmap us,ru -option 'grp:alt_shift_toggle' &
+setxkbmap us,ru -option 'grp:alt_shift_toggle,caps:none' &
 
 # Wallpapers
-feh --bg-scale ~/Pictures/wallpapers/wallpaper23.png
+feh --bg-scale ~/Pictures/wallpapers/wallpaper24.jpg &
 
 # Tray
 flameshot &

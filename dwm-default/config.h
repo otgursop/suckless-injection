@@ -1,7 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+/* preprocessor */
+#include <X11/XF86keysym.h>
+
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -26,7 +29,7 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
@@ -61,10 +64,40 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *browser[] = { "librewolf", NULL };
+static const char *filemanager[] = { "st", "-e", "yazi", NULL };
+
+static const char *lockscreen[] = { "slock", NULL };
+
+static const char *screenshot[] = { "flameshot", "gui", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+  { MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
+  { MODKEY|ShiftMask,             XK_r,          spawn,                  {.v = browser } },
+  { MODKEY|ShiftMask,             XK_w,          spawn,                  {.v = filemanager } },
+  /* utils */
+	{ MODKEY,                       XK_s,          spawn,                  {.v = lockscreen } },
+  { 0,                            XK_Print,      spawn,                  {.v = screenshot } },
+
+  /* volume and brightness control (<X11/XF86keysym.h> included) */
+	{ 0,                            XF86XK_AudioMute,           spawn,     SHCMD("pactl set-sink-mute 0 toggle") },
+	{ 0,                            XF86XK_AudioLowerVolume,    spawn,     SHCMD("pactl set-sink-volume 0 -3%") },
+  { 0,                            XF86XK_AudioRaiseVolume,    spawn,     SHCMD("pactl set-sink-volume 0 +3%") },
+
+  { 0,                            XF86XK_MonBrightnessUp,     spawn,     SHCMD("brightnessctl g +5%") },
+  { 0,                            XF86XK_MonBrightnessDown,   spawn,     SHCMD("brightnessctl g 5%-") },
+
+  /* dwmbloks-async signals */
+  { 0,							              XF86XK_AudioLowerVolume,    spawn,     SHCMD("pkill -RTMIN+2 dwmblocks") },
+	{ 0,						              	XF86XK_AudioRaiseVolume,    spawn,     SHCMD("pkill -RTMIN+2 dwmblocks") },
+	{ 0,							              XF86XK_AudioMute,           spawn,     SHCMD("pkill -RTMIN+2 dwmblocks") },
+
+  // { ShiftMask,				          	XK_Alt_L,      spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
+	// { Mod1Mask,					          	XK_Shift_L,    spawn,		               SHCMD("kill -39 $(pidof dwmblocks)") },
+
+  { 0,                            XK_ISO_Next_Group,          spawn,     SHCMD("kill -39 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

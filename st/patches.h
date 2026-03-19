@@ -81,7 +81,7 @@
  * This patch makes st set CLIPBOARD on selection.
  * https://st.suckless.org/patches/clipboard/
  */
-#define CLIPBOARD_PATCH 1
+#define CLIPBOARD_PATCH 0
 
 /* This patch allows st to be resized without cutting off text when the terminal window is
  * made larger again. Text does not wrap when the terminal window is made smaller, you may
@@ -107,7 +107,7 @@
  * restores the window title (for instance nvim does this when opening and closing).
  * https://st.suckless.org/patches/csi_22_23/
  */
-#define CSI_22_23_PATCH 0
+#define CSI_22_23_PATCH 1
 
 /* According to the specification (see link in BLINKING_CURSOR_PATCH) the "Set cursor style
  * (DECSCUSR), VT520." escape sequences define both values of 0 and 1 as a blinking block,
@@ -132,7 +132,7 @@
 /* This patch adds the option of disabling bold fonts globally.
  * https://st.suckless.org/patches/disable_bold_italic_fonts/
  */
-#define DISABLE_BOLD_FONTS_PATCH 0
+#define DISABLE_BOLD_FONTS_PATCH 1
 
 /* This patch adds the option of disabling italic fonts globally.
  * https://st.suckless.org/patches/disable_bold_italic_fonts/
@@ -405,7 +405,7 @@
  *
  * https://gist.github.com/saitoha/70e0fdf22e3e8f63ce937c7f7da71809
  */
-#define SIXEL_PATCH 0
+#define SIXEL_PATCH 1
 
 /* This patch allows clients to embed into the st window and is useful if you tend to
  * start X applications from the terminal. For example:
@@ -500,14 +500,14 @@
 /* Adds support for w3m images.
  * https://st.suckless.org/patches/w3m/
  */
-#define W3M_PATCH 1
+#define W3M_PATCH 0
 
 /* Adds proper glyphs rendering in st allowing wide glyphs to be drawn as-is as opposed to
  * smaller or cut glyphs being rendered.
  * https://github.com/Dreomite/st/commit/e3b821dcb3511d60341dec35ee05a4a0abfef7f2
  * https://www.reddit.com/r/suckless/comments/jt90ai/update_support_for_proper_glyph_rendering_in_st/
  */
-#define WIDE_GLYPHS_PATCH 1
+#define WIDE_GLYPHS_PATCH 0
 
 /* There is a known issue that Google's Variable Fonts (VF) can end up with letter spacing
  * that is too wide in programs that use Xft, for example Inconsolata v3.000.

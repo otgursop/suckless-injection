@@ -209,7 +209,7 @@
 #define BAR_WINICON_PATCH 0
 
 /* Show window title in bar */
-#define BAR_WINTITLE_PATCH 1
+#define BAR_WINTITLE_PATCH 0
 
 /* Shows window titles in the bar, but only for floating clients.
  * This depends on code from the flexwintitle patch.
@@ -913,7 +913,7 @@
 /* Removes the border when there is only one window visible.
  * https://dwm.suckless.org/patches/noborder/
  */
-#define NOBORDER_PATCH 1
+#define NOBORDER_PATCH 0
 
 /* Enable modifying or removing dmenu in config.def.h which resulted previously in a
  * compilation error because two lines of code hardcode dmenu into dwm.

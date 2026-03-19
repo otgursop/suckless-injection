@@ -1,18 +1,18 @@
 /* See LICENSE file for copyright and license details. */
 
-/* Include */
+/* include */
 #include <X11/XF86keysym.h>
 
-/* Helper macros for spawning commands */
+/* helper macros for spawning commands */
 #define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/zsh", "-c", cmd, NULL } }
 #define CMD(...)   { .v = (const char*[]){ __VA_ARGS__, NULL } }
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
-static const unsigned int borderpx       = 5;   /* border pixel of windows */
+static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 5;   /* border pixel of windows */
+static const unsigned int borderpx       = 3;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 #if BAR_BORDER_PATCH
 /* This allows the bar border size to be explicitly set separately from borderpx.
