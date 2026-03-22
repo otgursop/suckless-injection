@@ -9,13 +9,16 @@ feh --bg-scale ~/Pictures/wallpapers/wallpaper15.png &
 # Tray
 flameshot &
 nm-applet &
-blueman-applet &
+# blueman-applet &
 
 # Notifications
 dunst &
 
 # Status bar
 dwmblocks &
+
+# Compositor
+picom -b 
 
 # Mouse settings
 # Turn off the acceleration
