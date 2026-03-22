@@ -179,7 +179,7 @@ static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:styl
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#ebdbb2";
-static char normbgcolor[]                = "#363333";
+static char normbgcolor[]                = "#282828";
 static char normbordercolor[]            = "#504945";
 static char normfloatcolor[]             = "#504945";
 
